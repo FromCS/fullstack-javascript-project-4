@@ -18,5 +18,8 @@
   "homepage": "https://github.com/FromCS/fullstack-javascript-project-4#readme",
   "devDependencies": {
     "eslint": "^8.38.0"
+  },
+  "dependencies": {
+    "jest": "^29.5.0"
   }
 }
