@@ -5,8 +5,10 @@ export default (url, type = 'file') => {
       return `${hostAndPathName.replace(/[^a-zA-Z0-9]/gm, '-')}_files`;
     }
     case 'image': {
-      const extension = url.toString().endsWith('.png') ? '.png' : 'jpg';
-      const [name] = url.toString().split(extension);
+      const { host, pathname } = url;
+      const extension = pathname.endsWith('.png') ? '.png' : '.jpg';
+      const [path] = pathname.split(extension);
+      const name = `${host}${path}`;
       return `${name.replace(/[^a-zA-Z0-9]/gm, '-')}${extension}`;
     }
     default: {
