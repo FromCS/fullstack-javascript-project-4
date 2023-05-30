@@ -11,11 +11,11 @@ const getImagesLinks = (data, url, dirPath, loadPath) => {
   const imageLinks = Array.from($imgs)
     .filter(({ attribs }) => attribs.src.endsWith('.png') || attribs.src.endsWith('.jpg'))
     .map(({ attribs }) => {
-      const { host, pathname } = new URL(attribs.src, url);
-      const imageFilename = getValidFilename(`${host}${pathname}`, 'image');
+      const imageURL = new URL(attribs.src, url);
+      const imageFilename = getValidFilename(imageURL, 'image');
       const localSrc = path.join(dirPath, imageFilename);
-      $(`img[src=${pathname}]`).attr('src', localSrc);
-      return `${host}${pathname}`;
+      $(`img[src=${imageURL.pathname}]`).attr('src', localSrc);
+      return imageURL;
     });
   fs.writeFile(loadPath, $.html());
   return imageLinks;
