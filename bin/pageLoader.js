@@ -12,7 +12,7 @@ program
   .argument('<url>', 'url of page for loading')
   .argument('[output]', 'output dir', process.cwd())
   .action((url, output) => {
-    pageLoader(url, output).then(() => console.log(`Page was loaded to ${output}`));
+    pageLoader(url, program.opts().output).then(() => console.log(`Page was loaded to ${output}/${program.opts().output}`));
   });
 
 program.parse(process.argv);
