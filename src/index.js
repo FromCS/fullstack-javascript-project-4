@@ -7,7 +7,8 @@ import loadImages from './loadImages.js';
 const pageLoader = (url, output = process.cwd()) => {
   const loadingURL = new URL(url);
   const loadingFilename = getValidFilename(loadingURL);
-  const loadingFilepath = path.join(output, loadingFilename);
+  fs.access(output).then().catch(() => fs.mkdir(output));
+  const loadingFilepath = path.resolve(process.cwd(), output, loadingFilename);
   const html = axios.get(loadingURL)
     .then(({ data }) => {
       fs.writeFile(loadingFilepath, data);
