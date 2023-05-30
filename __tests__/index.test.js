@@ -36,8 +36,8 @@ beforeEach(async () => {
   scope = nock(/ru\.hexlet\.io/)
     .get(/\/courses/)
     .reply(200, fixtureHTML);
-  imagesScope = nock(/.*/)
-    .get(/assets\/professions\/nodejs\.png/)
+  imagesScope = nock(/ru\.hexlet\.io/)
+    .get(/\/assets\/professions\/nodejs.png/)
     .reply(200, (uri, responseBody) => createReadStream(path.join(__dirname, '..', '__fixtures__', 'assets', 'professions', 'nodejs.png')));
   await pageLoader('https://ru.hexlet.io/courses', tempDir);
   html = await fs.readFile(expectedHTMLPath, 'utf-8');
