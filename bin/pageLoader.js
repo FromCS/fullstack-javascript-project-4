@@ -12,7 +12,8 @@ program
   .argument('<url>', 'url of page for loading')
   .argument('[output]', 'output dir', process.cwd())
   .action((url, output) => {
-    pageLoader(url, program.opts().output).then(() => console.log(`Page was loaded to ${output}/${program.opts().output}`));
+    const path = program.opts().output || '';
+    pageLoader(url, program.opts().output).then(() => console.log(`Page was loaded to ${output}/${path}`));
   });
 
 program.parse(process.argv);
