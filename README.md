@@ -18,5 +18,13 @@ Also loading local images.
 
 ## How it work
 ```bash
-page-loader --output ./page-loader https://ru.hexlet.io/courses
+page-loader https://www.google.com
 ```
+
+[![asciicast](https://asciinema.org/a/589012.svg)](https://asciinema.org/a/589012)
+
+```bash
+page-loader -o google/ https://www.google.com
+```
+
+[![asciicast](https://asciinema.org/a/589017.svg)](https://asciinema.org/a/589017)
